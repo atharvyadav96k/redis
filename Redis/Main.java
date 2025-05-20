@@ -4,15 +4,17 @@ import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.io.IOException;
+import Configuration.Configuration;
 
 public class Main {
     public static void main(String[] args) {
         try {
-            ServerSocket server = new ServerSocket(5000);
-            System.out.println("Redis-like Server started on port 5000...");
+            Configuration config = new Configuration();
+            ServerSocket server = new ServerSocket(config.getPort());
+            System.out.println("Redis is running on port: "+config.getPort()+"...");
             while (true) {
                 Socket newClient = server.accept();
-                System.out.println("New Client Connected: " + newClient.getInetAddress());
+                
                 new HandleClient(newClient).start();
             }
         } catch (IOException e) {
@@ -45,14 +47,22 @@ class HandleClient extends Thread {
                 if (cmds.equals("ping")) {
                     out.print("+PONG\r\n");
                     out.flush();
+                } else if(cmds.equals("port")){
+                    Configuration cfg = new Configuration();
+                    cfg.setPort(4000);
+                    out.print("+Restart Server to apply changes\r\n");
+                    out.flush();
                 } else if(cmds.equals("exit")){
-                    this.client.close();
-                } else {
+                    out.print("+Connections closed\r\n");
+                    out.flush();
+                    client.close();
+                }else {
                     out.print("-ERR unknown command\r\n");
                     out.flush();
                 }
             }
         } catch (IOException e) {
+            System.out.println(e.getMessage());
             System.out.println("Client Disconnected: " + client.getInetAddress());
         } finally {
             try {
