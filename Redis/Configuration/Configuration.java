@@ -2,9 +2,9 @@ package Configuration;
 
 import java.io.*;
 
-/* Here we are storing data into binary file 
-if file is not there create file with some default settings
-set configuration and get configuration */
+// Here we are storing data into binary file 
+// if file is not there create file with some default settings
+// set configuration and get configuration
 
 public class Configuration {
     private static final String FILE_PATH = "./bin/config.redis";
