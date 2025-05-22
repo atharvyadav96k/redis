@@ -12,6 +12,10 @@ public class RHashes {
         this.map.put(key, value);
     }
 
+    public Type getType(){
+        return Type.HASHES;
+    }
+
     public String get(String key) {
         return this.map.get(key);
     }

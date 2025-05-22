@@ -5,6 +5,10 @@ import java.util.LinkedList;
 public class RLists {
     private LinkedList<String> l = new LinkedList<>();
 
+    public Type getType(){
+        return Type.LISTS;
+    }
+
     public void lPush(String val) {
         this.l.addFirst(val);
     }

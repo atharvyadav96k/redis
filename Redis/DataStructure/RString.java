@@ -7,6 +7,10 @@ public class RString {
     public RString() {
         this.str = "(nil)";
     }
+    
+    public Type getType(){
+        return Type.STRING;
+    }
 
     public void set(String str) {
         this.str = str;
