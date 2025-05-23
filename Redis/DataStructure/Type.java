@@ -5,5 +5,7 @@ public enum Type {
     LISTS,
     SETS,
     HASHES,
-    SORTED_SET
+    SORTED_SET,
+    INTEGER,
+    ERROR
 }

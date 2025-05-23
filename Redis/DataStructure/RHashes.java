@@ -12,7 +12,7 @@ public class RHashes {
         this.map.put(key, value);
     }
 
-    public Type getType(){
+    public Type getType() {
         return Type.HASHES;
     }
 
@@ -20,52 +20,40 @@ public class RHashes {
         return this.map.get(key);
     }
 
-    public String getKeys() {
+    public String[] getKeys() {
         Set<String> keys = this.map.keySet();
-        StringBuffer result = new StringBuffer();
-        int i = 1;
-        for (String str : keys) {
-            result.append(i + ") " + str + "\n");
-            i++;
-        }
-        return result.toString();
+        return keys.toArray(new String[0]);
     }
 
-    public String getValues(){
+    public String[] getValues() {
         Collection<String> values = this.map.values();
-        StringBuffer result = new StringBuffer();
-        int i = 1;
-        for(String str: values){
-            result.append(i+")"+str+"\n");
-            i++;
-        }
-        return result.toString();
+        return values.toArray(new String[0]);
     }
 
-    public int len(){
+    public int len() {
         return this.map.size();
     }
 
-    public int incr(String key) throws Exception{
+    public int incr(String key) throws Exception {
         return this.incrBy(key, 1);
     }
 
-    public int incrBy(String key, int incr) throws Exception{
+    public int incrBy(String key, int incr) throws Exception {
         String value = this.map.get(key);
         int val = IncrementDecrement.incrBy(value, incr);
         this.map.put(key, Integer.toString(val));
         return val;
     }
 
-    public float incrByFloat(String key, float incr) throws Exception{
+    public float incrByFloat(String key, float incr) throws Exception {
         String value = this.map.get(key);
         float val = IncrementDecrement.incrByFloat(value, incr);
         this.map.put(key, Float.toString(val));
         return val;
     }
 
-    public int exists(String key){
+    public int exists(String key) {
         return this.map.containsKey(key) ? 1 : 0;
     }
-    
+
 }

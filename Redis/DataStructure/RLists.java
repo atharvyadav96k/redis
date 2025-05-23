@@ -5,7 +5,7 @@ import java.util.LinkedList;
 public class RLists {
     private LinkedList<String> l = new LinkedList<>();
 
-    public Type getType(){
+    public Type getType() {
         return Type.LISTS;
     }
 
@@ -38,30 +38,34 @@ public class RLists {
         return this.l.get(num);
     }
 
-    public String lRange(int left, int right) {
+    public String[] lRange(int left, int right) {
         int size = l.size();
 
-        if (left < 0) left = size + left;
-        if (right < 0) right = size + right;
+        if (left < 0)
+            left = size + left;
+        if (right < 0)
+            right = size + right;
 
         left = Math.max(0, left);
         right = Math.min(right, size - 1);
 
         if (left > right || left >= size) {
-            return "(empty array)";
+            return new String[0]; // return empty array
         }
 
-        StringBuilder result = new StringBuilder();
+        String[] result = new String[right - left + 1];
         for (int i = left; i <= right; i++) {
-            result.append((i + 1)).append(")").append(l.get(i)).append("\n");
+            result[i - left] = l.get(i);
         }
-        return result.toString();
+        return result;
     }
 
     public void lTrim(int start, int end) {
         int size = l.size();
-        if (start < 0) start = size + start;
-        if (end < 0) end = size + end;
+        if (start < 0)
+            start = size + start;
+        if (end < 0)
+            end = size + end;
 
         start = Math.max(0, start);
         end = Math.min(end, size - 1);
