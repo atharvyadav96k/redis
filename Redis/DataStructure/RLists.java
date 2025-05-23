@@ -6,7 +6,7 @@ public class RLists {
     private LinkedList<String> l = new LinkedList<>();
 
     public Type getType() {
-        return Type.LISTS;
+        return Type.STRING;
     }
 
     public void lPush(String val) {

@@ -13,7 +13,7 @@ public class RHashes {
     }
 
     public Type getType() {
-        return Type.HASHES;
+        return Type.STRING;
     }
 
     public String get(String key) {

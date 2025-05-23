@@ -3,8 +3,10 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.Arrays;
 import java.io.IOException;
 import Configuration.Configuration;
+import Handler.RError;
 
 public class Main {
     public static void main(String[] args) {
@@ -32,7 +34,7 @@ class HandleClient extends Thread {
         this.client = socket;
         try {
             this.in = new BufferedReader(new InputStreamReader(this.client.getInputStream()));
-            this.out = new PrintWriter(this.client.getOutputStream(), true);
+            this.out = new PrintWriter(this.client.getOutputStream());
         } catch (IOException e) {
             System.out.println("Error setting up client IO: " + e.getMessage());
         }
@@ -43,23 +45,15 @@ class HandleClient extends Thread {
             String line;
             while ((line = in.readLine()) != null) {
                 System.out.println(line);
-                String cmds = line.trim();
-                if (cmds.equals("ping")) {
-                    out.print("+PONG\r\n");
-                    out.flush();
-                } else if(cmds.equals("port")){
-                    Configuration cfg = new Configuration();
-                    cfg.setPort(4000);
-                    out.print("+Restart Server to apply changes\r\n");
-                    out.flush();
-                } else if(cmds.equals("exit")){
-                    out.print("+Connections closed\r\n");
-                    out.flush();
-                    client.close();
-                }else {
-                    out.print("-ERR unknown command\r\n");
-                    out.flush();
+                String[] cmds;
+                try{
+                    cmds = CommandParser.parseCommand(line);
+                    System.out.println(Arrays.toString(cmds));
+                }catch(Exception e){
+                    this.out.write(new RError(e.getMessage()).getFormattedValue());
+                    this.out.flush();
                 }
+                
             }
         } catch (IOException e) {
             System.out.println(e.getMessage());
