@@ -3,10 +3,11 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.util.Arrays;
 import java.io.IOException;
 import Configuration.Configuration;
 import Handler.RError;
+import Handler.RedisData;
+import Commands.*;
 
 public class Main {
     public static void main(String[] args) {
@@ -48,7 +49,9 @@ class HandleClient extends Thread {
                 String[] cmds;
                 try{
                     cmds = CommandParser.parseCommand(line);
-                    System.out.println(Arrays.toString(cmds));
+                    RedisData res = RequestProcessor.processRequest(cmds);
+                    this.out.write(res.getFormattedValue());
+                    this.out.flush();
                 }catch(Exception e){
                     this.out.write(new RError(e.getMessage()).getFormattedValue());
                     this.out.flush();
@@ -61,6 +64,7 @@ class HandleClient extends Thread {
         } finally {
             try {
                 this.client.close();
+                System.out.println("Client Disconnected"+client.getInetAddress());
             } catch (IOException e) {
                 System.out.println("Error closing connection: " + e.getMessage());
             }

@@ -1,4 +1,5 @@
 package DataStructure;
+
 import DataStructure.Increment.IncrementDecrement;
 
 public class RString {
@@ -7,8 +8,8 @@ public class RString {
     public RString() {
         this.str = "(nil)";
     }
-    
-    public Type getType(){
+
+    public Type getType() {
         return Type.STRING;
     }
 
@@ -21,6 +22,9 @@ public class RString {
     }
 
     public String getRange(int start, int end) {
+        if (end == -1) {
+            return this.str.substring(start);
+        }
         return this.str.substring(start, end);
     }
 
