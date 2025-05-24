@@ -1,10 +1,8 @@
 package Commands;
+
 import java.util.Map;
-
 import Commands.String.*;
-
 import java.util.HashMap;
-
 import Handler.RedisData;
 
 public class RequestProcessor {
@@ -17,6 +15,11 @@ public class RequestProcessor {
         handlers.put("GETSET", new GetSetCmd());
         handlers.put("MSET", new MsetCmd());
         handlers.put("MGET", new MgetCmd());
+        handlers.put("INCR", new IncrCmd());
+        handlers.put("INCRBY", new IncrByCmd());
+        handlers.put("DECR", new DecrCmd());
+        handlers.put("DECRBY", new DecrByCmd());
+        handlers.put("STRLEN", new LenCmd());
     }
     public static RedisData processRequest(String[] args) throws Exception{
         String cmd = args[0].toUpperCase();

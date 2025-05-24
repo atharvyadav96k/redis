@@ -34,8 +34,8 @@ public class RString {
         return old;
     }
 
-    public int len(String str) {
-        return str.equals("(nil)") ? 0 : str.length();
+    public int len() {
+        return this.str.equals("(nil)") ? 0 : this.str.length();
     }
 
     public int incr() throws Exception {
