@@ -21,6 +21,6 @@ public class RInteger  extends RedisData{
 
     @Override
     public String getFormattedValue(){
-        return "(integer)"+this.value+"\r\n";
+        return "(integer) "+this.value+"\r\n";
     }
 }

@@ -20,7 +20,7 @@ public class RError extends RedisData{
 
     @Override
     public String getFormattedValue(){
-        return "-Error "+this.value+"\r\n";
+        return "(error) "+this.value+"\r\n";
     }
 
 }

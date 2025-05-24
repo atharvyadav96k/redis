@@ -17,6 +17,9 @@ public class RHashes {
     }
 
     public String get(String key) {
+        if(!this.map.containsKey(key)){
+            return "(nil)";
+        }
         return this.map.get(key);
     }
 

@@ -34,6 +34,14 @@ public class RString {
         return old;
     }
 
+    public int append(String str){
+        if(this.str == "(nil)"){
+            this.str = "";
+        }
+        this.str+=str;
+        return len();
+    }
+
     public int len() {
         return this.str.equals("(nil)") ? 0 : this.str.length();
     }
