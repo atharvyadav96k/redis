@@ -9,6 +9,7 @@ import Handler.RError;
 import Handler.RedisData;
 import Commands.*;
 import Workers.ExpireWorker;
+import Workers.PassiveCleaner;
 
 public class Main {
     public static void main(String[] args) {
@@ -18,7 +19,7 @@ public class Main {
             ServerSocket server = new ServerSocket(config.getPort());
             System.out.println("Redis is running on port: "+config.getPort()+"...");
 
-            // Remove expired values from database
+            // Remove expired values from database in background
             ExpireWorker clean = new ExpireWorker();
             clean.setDaemon(true);
             clean.start();
@@ -33,6 +34,7 @@ public class Main {
         }
     }
 }
+
 
 class HandleClient extends Thread {
     private Socket client;
@@ -57,6 +59,10 @@ class HandleClient extends Thread {
                 String[] cmds;
                 try{
                     cmds = CommandParser.parseCommand(line);
+                    
+                    // Delete keys if it get expire when accessing it
+                    PassiveCleaner.deleteOnExpire(cmds);
+                    // process and send feedback to user
                     RedisData res = RequestProcessor.processRequest(cmds);
                     this.out.write(res.getFormattedValue());
                     this.out.flush();

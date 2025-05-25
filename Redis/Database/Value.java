@@ -16,6 +16,6 @@ public class Value{
             return System.currentTimeMillis() >= this.exp;
         }
         public void setExp(int duration){
-            this.exp = System.currentTimeMillis() + duration;
+            this.exp = System.currentTimeMillis() + (duration * 1000) ;
         }
 }
