@@ -6,6 +6,10 @@ import java.util.Map;
 public class Database {
     private static Map<String, Value> store = new HashMap<>();
 
+    public static String[] getKeys(){
+        return store.keySet().toArray(new String[0]);
+    }
+
     public static Value dbGet(String key){
         return store.get(key) ;
     }
@@ -23,7 +27,11 @@ public class Database {
     }
     public static void exp(String key, int exp){
         Value val = store.get(key);
-        val.exp = exp;
+        val.set(exp);
         store.put(key, val);
+    }
+    public static boolean isExp(String key){
+        Value val = store.get(key);
+        return val.isExp();
     }
 }

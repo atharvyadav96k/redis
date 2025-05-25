@@ -8,16 +8,24 @@ import Configuration.Configuration;
 import Handler.RError;
 import Handler.RedisData;
 import Commands.*;
+import Workers.ExpireWorker;
 
 public class Main {
     public static void main(String[] args) {
         try {
+            // Start Server
             Configuration config = new Configuration();
             ServerSocket server = new ServerSocket(config.getPort());
             System.out.println("Redis is running on port: "+config.getPort()+"...");
+
+            // Remove expired values from database
+            ExpireWorker clean = new ExpireWorker();
+            clean.setDaemon(true);
+            clean.start();
+
+            // Handle new Clients
             while (true) {
                 Socket newClient = server.accept();
-                
                 new HandleClient(newClient).start();
             }
         } catch (IOException e) {
@@ -64,7 +72,7 @@ class HandleClient extends Thread {
         } finally {
             try {
                 this.client.close();
-                System.out.println("Client Disconnected"+client.getInetAddress());
+                System.out.println("Client Disconnected: "+client.getInetAddress());
             } catch (IOException e) {
                 System.out.println("Error closing connection: " + e.getMessage());
             }

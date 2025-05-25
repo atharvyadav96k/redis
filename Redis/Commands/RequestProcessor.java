@@ -13,6 +13,7 @@ public class RequestProcessor {
     static{
         // Common commands
         handlers.put("DEL", new DelCmd());
+        handlers.put("EXPIRE", new ExpCmd());
 
         // String commands
         handlers.put("PING", new PingCmd());
