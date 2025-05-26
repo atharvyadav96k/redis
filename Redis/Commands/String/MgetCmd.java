@@ -4,15 +4,16 @@ import java.util.ArrayList;
 import java.util.List;
 import Commands.CommandHandler;
 import DataStructure.RString;
-import Handler.BulkString;
-import Handler.RedisData;
 import Database.*;
+import ResponseAndError.BulkString;
+import ResponseAndError.RedisData;
+import ResponseAndError.ThrowError.WrongNumberOfArguements;
 
 public class MgetCmd implements CommandHandler {
     @Override
     public RedisData handle(String[] args) throws Exception {
         if (args.length < 2) {
-            throw new Exception("ERR wrong number of arguments for 'mget' command");
+            WrongNumberOfArguements.throwError("mget");
         }
 
         List<String> values = new ArrayList<>();

@@ -2,22 +2,22 @@ package Commands.Hashes;
 
 import Commands.CommandHandler;
 import DataStructure.RHashes;
-import Database.*;
+import ResponseAndError.RInteger;
 import ResponseAndError.RedisData;
-import ResponseAndError.SimpleString;
 import ResponseAndError.ThrowError.WrongNumberOfArguements;
+import Database.*;
 
-public class HgetCmd implements CommandHandler{
+public class HexistsCmd implements CommandHandler{
     @Override
     public RedisData handle(String[] args) throws Exception{
         if(args.length != 3){
-            WrongNumberOfArguements.throwError("hget");
+            WrongNumberOfArguements.throwError("hexits");
         }
         if(!Database.dbExists(args[1])){
-            return new SimpleString("(nil)");
+            return new RInteger(0);
         }
         Value value = Database.dbGet(args[1]);
-        RHashes hash = (RHashes) value.get();
-        return new SimpleString(hash.get(args[2]));
+        RHashes hashes = (RHashes) value.get();
+        return new RInteger(hashes.exists(args[2]));
     }
 }

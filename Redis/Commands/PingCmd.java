@@ -1,6 +1,6 @@
 package Commands;
-import Handler.RedisData;
-import Handler.SimpleString;
+import ResponseAndError.RedisData;
+import ResponseAndError.SimpleString;
 
 public class PingCmd implements CommandHandler{
     @Override

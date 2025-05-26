@@ -1,16 +1,17 @@
 package Commands.String;
 
 import Commands.CommandHandler;
-import Handler.RInteger;
-import Handler.RedisData;
 import DataStructure.RString;
 import Database.*;
+import ResponseAndError.RInteger;
+import ResponseAndError.RedisData;
+import ResponseAndError.ThrowError.WrongNumberOfArguements;
 
 public class LenCmd implements CommandHandler {
     @Override
     public RedisData handle(String[] args) throws Exception{
         if(args.length != 2){
-            throw new Exception("Err wrong number of arguments for 'len' command");
+            WrongNumberOfArguements.throwError("strlen");
         }
         if(!Database.dbExists(args[1])){
             return new RInteger(0);

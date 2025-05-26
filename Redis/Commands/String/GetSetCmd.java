@@ -1,8 +1,9 @@
 package Commands.String;
 
-import Handler.RedisData;
-import Handler.SimpleString;
 import Database.*;
+import ResponseAndError.RedisData;
+import ResponseAndError.SimpleString;
+import ResponseAndError.ThrowError.WrongNumberOfArguements;
 import Commands.CommandHandler;
 import DataStructure.RString;
 
@@ -10,7 +11,7 @@ public class GetSetCmd implements CommandHandler{
     @Override
     public RedisData handle(String[] args) throws Exception{
         if(args.length != 3){
-            throw new Exception("ERR wrong number of arguments for 'get set' command");
+            WrongNumberOfArguements.throwError("getset");
         }
         if(!Database.dbExists(args[1])){
             RString str = new RString();

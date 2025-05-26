@@ -2,15 +2,16 @@ package Commands.String;
 
 import Commands.CommandHandler;
 import DataStructure.RString;
-import Handler.RInteger;
-import Handler.RedisData;
 import Database.*;
+import ResponseAndError.RInteger;
+import ResponseAndError.RedisData;
+import ResponseAndError.ThrowError.WrongNumberOfArguements;
 
 public class MsetCmd implements CommandHandler {
     @Override
     public RedisData handle(String[] args) throws Exception {
         if (args.length % 2 == 0) {
-            throw new Exception("ERR wrong number of arguments for 'mset' command");
+            WrongNumberOfArguements.throwError("mset");
         }
         int totalSets = 0;
         for (int i = 1; i < args.length - 1; i+=2) {

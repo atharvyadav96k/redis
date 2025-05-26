@@ -3,15 +3,16 @@ package Commands.String;
 import Commands.CommandHandler;
 import DataStructure.RString;
 import Database.*;
-import Handler.RInteger;
-import Handler.RedisData;
+import ResponseAndError.RInteger;
+import ResponseAndError.RedisData;
+import ResponseAndError.ThrowError.WrongNumberOfArguements;
 
 
 public class IncrByCmd implements CommandHandler{
     @Override
     public RedisData handle(String[] args) throws Exception{
         if(args.length != 3){
-            throw new Exception("ERR wrong number of arguments for 'incr by' command");
+            WrongNumberOfArguements.throwError("incrby");
         }
         if(!Database.dbExists(args[1])){
             RString rStr = new RString();

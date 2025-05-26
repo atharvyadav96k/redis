@@ -1,9 +1,9 @@
 package Commands.Common;
 
 import Commands.CommandHandler;
-import Handler.RInteger;
-import Handler.RedisData;
 import Database.*;
+import ResponseAndError.RInteger;
+import ResponseAndError.RedisData;
 
 public class DelCmd implements CommandHandler{
     @Override

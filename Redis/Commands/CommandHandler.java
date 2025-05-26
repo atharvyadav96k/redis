@@ -1,5 +1,5 @@
 package Commands;
-import Handler.RedisData;
+import ResponseAndError.RedisData;
 
 public interface CommandHandler {
     RedisData handle(String[] args)throws Exception;

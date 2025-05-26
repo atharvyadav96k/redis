@@ -2,9 +2,13 @@ package Commands;
 
 import java.util.Map;
 import Commands.String.*;
+import ResponseAndError.RedisData;
+
 import java.util.HashMap;
-import Handler.RedisData;
+
 import Commands.Common.*;
+import Commands.Hashes.HexistsCmd;
+import Commands.Hashes.HgetAllCmd;
 import Commands.Hashes.HgetCmd;
 import Commands.Hashes.HsetCmd;
 
@@ -33,6 +37,8 @@ public class RequestProcessor {
         // Hashes
         handlers.put("HSET", new HsetCmd());
         handlers.put("HGET", new HgetCmd());
+        handlers.put("HEXISTS", new HexistsCmd());
+        handlers.put("HGETALL", new HgetAllCmd());
     }
     public static RedisData processRequest(String[] args) throws Exception{
         String cmd = args[0].toUpperCase();

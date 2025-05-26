@@ -2,15 +2,16 @@ package Commands.String;
 
 import Commands.CommandHandler;
 import DataStructure.RString;
-import Handler.RInteger;
-import Handler.RedisData;
 import Database.*;
+import ResponseAndError.RInteger;
+import ResponseAndError.RedisData;
+import ResponseAndError.ThrowError.WrongNumberOfArguements;
 
 public class DecrByCmd  implements CommandHandler{
     @Override
     public RedisData handle(String[] args) throws Exception{
         if(args.length != 3){
-            throw new Exception("ERR wrong number of argument for 'decr by' command");
+            WrongNumberOfArguements.throwError("decrby");
         }
         if(!Database.dbExists(args[1])){
             Value value = new Value();

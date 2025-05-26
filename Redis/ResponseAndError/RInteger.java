@@ -1,4 +1,4 @@
-package Handler;
+package ResponseAndError;
 
 import DataStructure.Type;
 
