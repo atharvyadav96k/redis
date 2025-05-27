@@ -28,7 +28,6 @@ public class Configuration {
     public static void setPort(int port) {
         config.port = port;
         saveChanges();
-        System.exit(0);
     }
 
     public static boolean isConnectionLimit(){

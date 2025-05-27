@@ -3,6 +3,7 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.Arrays;
 import java.io.IOException;
 import Configuration.Configuration;
 import ResponseAndError.RError;
@@ -59,11 +60,13 @@ class HandleClient extends Thread {
                 String[] cmds;
                 try{
                     cmds = CommandParser.parseCommand(line);
+                    System.out.println(Arrays.toString(cmds) + " "+cmds[0]);
                     
                     // Delete keys if it get expire when accessing it
                     PassiveCleaner.deleteOnExpire(cmds);
                     // process and send feedback to user
                     RedisData res = RequestProcessor.processRequest(cmds);
+                    
                     this.out.write(res.getFormattedValue());
                     this.out.flush();
                 }catch(Exception e){

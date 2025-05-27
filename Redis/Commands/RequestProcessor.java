@@ -7,15 +7,20 @@ import ResponseAndError.RedisData;
 import java.util.HashMap;
 
 import Commands.Common.*;
+import Commands.Config.ConfigCmd;
 import Commands.Hashes.HexistsCmd;
 import Commands.Hashes.HgetAllCmd;
 import Commands.Hashes.HgetCmd;
+import Commands.Hashes.HincrByCmd;
 import Commands.Hashes.HsetCmd;
 
 public class RequestProcessor {
     private static final Map<String, CommandHandler> handlers = new HashMap<>();    
     static{
-        // Common commands
+        // Configuration command
+        handlers.put("CONFIG", new ConfigCmd());
+
+        // Common command
         handlers.put("DEL", new DelCmd());
         handlers.put("EXPIRE", new ExpCmd());
 
@@ -39,6 +44,7 @@ public class RequestProcessor {
         handlers.put("HGET", new HgetCmd());
         handlers.put("HEXISTS", new HexistsCmd());
         handlers.put("HGETALL", new HgetAllCmd());
+        handlers.put("HINCRBY", new HincrByCmd());
     }
     public static RedisData processRequest(String[] args) throws Exception{
         String cmd = args[0].toUpperCase();
