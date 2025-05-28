@@ -44,6 +44,9 @@ public class RequestProcessor {
         handlers.put("HINCRBY", new HincrByCmd());
         handlers.put("HINCRBYFLOAT", new HincrbyFloatCmd());
         handlers.put("HKEYS", new HkeysCmd());
+        handlers.put("HLEN", new HlenCmd());
+        handlers.put("HMGET", new HmGetCmd());
+        handlers.put("HVALS", new HvalusCmd());
     }
     public static RedisData processRequest(String[] args) throws Exception{
         String cmd = args[0].toUpperCase();
