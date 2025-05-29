@@ -4,14 +4,14 @@ import Commands.CommandHandler;
 import Database.*;
 import ResponseAndError.RInteger;
 import ResponseAndError.RedisData;
-import ResponseAndError.ThrowError.WrongNumberOfArguements;
+import ResponseAndError.ThrowError.WrongNumberOfArguments;
 import DataStructure.RHashes;
 
 public class HsetCmd implements CommandHandler {
     @Override
     public RedisData handle(String[] args) throws Exception {
         if (args.length < 4 && args.length % 2 != 0) {
-            WrongNumberOfArguements.throwError("hget");
+            new WrongNumberOfArguments("hget");
         }
         if (!Database.dbExists(args[1])) {
             Value value = new Value();

@@ -3,7 +3,8 @@ package Commands.Config;
 import Commands.CommandHandler;
 import ResponseAndError.RedisData;
 import ResponseAndError.SimpleString;
-import ResponseAndError.ThrowError.WrongNumberOfArguements;
+import ResponseAndError.ThrowError.WrongNumberOfArguments;
+import ResponseAndError.ThrowError.WrongTypeInteger;
 import Configuration.Configuration;
 
 public class ConfigCmd implements CommandHandler{
@@ -11,10 +12,14 @@ public class ConfigCmd implements CommandHandler{
     public RedisData handle(String[] args) throws Exception{
         System.out.println("config");
         if(args.length != 3){
-            WrongNumberOfArguements.throwError("config");
+            throw new WrongNumberOfArguments("config");
         }
         if(args[1].equals("--port")){
-            Configuration.setPort(Integer.parseInt(args[2]));
+            try{
+                Configuration.setPort(Integer.parseInt(args[2]));
+            }catch(Exception e){
+                throw new WrongTypeInteger();
+            }
             return new SimpleString("OK");
         }
         throw new Exception("Invalid command");

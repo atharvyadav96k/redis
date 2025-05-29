@@ -7,13 +7,13 @@ import DataStructure.RString;
 import Database.*;
 import ResponseAndError.BulkString;
 import ResponseAndError.RedisData;
-import ResponseAndError.ThrowError.WrongNumberOfArguements;
+import ResponseAndError.ThrowError.WrongNumberOfArguments;
 
 public class MgetCmd implements CommandHandler {
     @Override
     public RedisData handle(String[] args) throws Exception {
         if (args.length < 2) {
-            WrongNumberOfArguements.throwError("mget");
+            new WrongNumberOfArguments("mget");
         }
 
         List<String> values = new ArrayList<>();

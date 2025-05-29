@@ -6,13 +6,13 @@ import Commands.CommandHandler;
 import Database.Value;
 import ResponseAndError.RedisData;
 import ResponseAndError.SimpleString;
-import ResponseAndError.ThrowError.WrongNumberOfArguements;
+import ResponseAndError.ThrowError.WrongNumberOfArguments;
 
 public class GetCmd implements CommandHandler {
     @Override
     public RedisData handle(String[] args) throws Exception {
         if (args.length != 2) {
-            WrongNumberOfArguements.throwError("get");
+            new WrongNumberOfArguments("get");
         }
 
         Value value = Database.dbGet(args[1]);

@@ -4,14 +4,14 @@ import Commands.CommandHandler;
 import DataStructure.RHashes;
 import ResponseAndError.RInteger;
 import ResponseAndError.RedisData;
-import ResponseAndError.ThrowError.WrongNumberOfArguements;
+import ResponseAndError.ThrowError.WrongNumberOfArguments;
 import Database.*;
 
 public class HexistsCmd implements CommandHandler{
     @Override
     public RedisData handle(String[] args) throws Exception{
         if(args.length != 3){
-            WrongNumberOfArguements.throwError("hexits");
+            new WrongNumberOfArguments("hexits");
         }
         if(!Database.dbExists(args[1])){
             return new RInteger(0);

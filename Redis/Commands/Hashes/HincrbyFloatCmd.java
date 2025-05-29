@@ -5,14 +5,15 @@ import DataStructure.RHashes;
 import ResponseAndError.RInteger;
 import ResponseAndError.RedisData;
 import ResponseAndError.SimpleString;
-import ResponseAndError.ThrowError.WrongNumberOfArguements;
+import ResponseAndError.ThrowError.WrongNumberOfArguments;
+import ResponseAndError.ThrowError.WrongTypeFloat;
 import Database.Database;
 import Database.Value;
 
 public class HincrbyFloatCmd implements CommandHandler{
     public RedisData handle(String[] args) throws Exception{
         if(args.length != 4){
-            WrongNumberOfArguements.throwError("hincrby");     
+            new WrongNumberOfArguments("hincrby");     
         }
         if(!Database.dbExists(args[1])){
             Value value = new Value();
@@ -25,9 +26,13 @@ public class HincrbyFloatCmd implements CommandHandler{
         if(hash.exists(args[2]) == 0){
             hash.set(args[2], "0");
         }
-        float incrVal = hash.incrByFloat(args[2], Float.parseFloat(args[3]));
-        value.set(hash);
-        Database.dbSet(args[1], value);
-        return new SimpleString(Float.toString(incrVal));
+        try{
+            float incrVal = hash.incrByFloat(args[2], Float.parseFloat(args[3]));
+            value.set(hash);
+            Database.dbSet(args[1], value);
+            return new SimpleString(Float.toString(incrVal));
+        }catch(Exception e){
+            throw new WrongTypeFloat();
+        }
     }
 }

@@ -5,13 +5,13 @@ import DataStructure.RString;
 import Database.*;
 import ResponseAndError.RInteger;
 import ResponseAndError.RedisData;
-import ResponseAndError.ThrowError.WrongNumberOfArguements;
+import ResponseAndError.ThrowError.WrongNumberOfArguments;
 
 public class DecrCmd implements CommandHandler{
     @Override
     public RedisData handle(String[] args) throws Exception{
         if(args.length != 2){
-            WrongNumberOfArguements.throwError("decr");
+            new WrongNumberOfArguments("decr");
         }
         if(!Database.dbExists(args[1])){
             Value value = new Value();

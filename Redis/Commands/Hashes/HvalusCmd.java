@@ -5,14 +5,14 @@ import DataStructure.RHashes;
 import ResponseAndError.BulkString;
 import ResponseAndError.RedisData;
 import ResponseAndError.SimpleString;
-import ResponseAndError.ThrowError.WrongNumberOfArguements;
+import ResponseAndError.ThrowError.WrongNumberOfArguments;
 import Database.*;
 
 public class HvalusCmd implements CommandHandler{
     @Override
     public RedisData handle(String[] args) throws Exception{
         if(args.length != 2){
-            WrongNumberOfArguements.throwError("HVALS");
+            new WrongNumberOfArguments("HVALS");
         }
         if(!Database.dbExists(args[1])){
             return new SimpleString("(nil)");

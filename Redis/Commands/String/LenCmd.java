@@ -5,13 +5,13 @@ import DataStructure.RString;
 import Database.*;
 import ResponseAndError.RInteger;
 import ResponseAndError.RedisData;
-import ResponseAndError.ThrowError.WrongNumberOfArguements;
+import ResponseAndError.ThrowError.WrongNumberOfArguments;
 
 public class LenCmd implements CommandHandler {
     @Override
     public RedisData handle(String[] args) throws Exception{
         if(args.length != 2){
-            WrongNumberOfArguements.throwError("strlen");
+            new WrongNumberOfArguments("strlen");
         }
         if(!Database.dbExists(args[1])){
             return new RInteger(0);

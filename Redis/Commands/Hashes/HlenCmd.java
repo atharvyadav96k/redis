@@ -4,14 +4,14 @@ import Commands.CommandHandler;
 import DataStructure.RHashes;
 import ResponseAndError.RInteger;
 import ResponseAndError.RedisData;
-import ResponseAndError.ThrowError.WrongNumberOfArguements;
+import ResponseAndError.ThrowError.WrongNumberOfArguments;
 import Database.*;
 
 public class HlenCmd implements CommandHandler{
     @Override
     public RedisData handle(String[] args) throws Exception{
         if(args.length != 2){
-            WrongNumberOfArguements.throwError("hlen");
+            new WrongNumberOfArguments("hlen");
         }
         if(!Database.dbExists(args[1])){
             return new RInteger(0);

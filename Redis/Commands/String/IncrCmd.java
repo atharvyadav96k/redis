@@ -4,14 +4,14 @@ import Commands.CommandHandler;
 import Database.*;
 import ResponseAndError.RInteger;
 import ResponseAndError.RedisData;
-import ResponseAndError.ThrowError.WrongNumberOfArguements;
+import ResponseAndError.ThrowError.WrongNumberOfArguments;
 import DataStructure.RString;
 
 public class IncrCmd implements CommandHandler {
     @Override
     public RedisData handle(String[] args) throws Exception{
         if(args.length != 2){
-            WrongNumberOfArguements.throwError("incr");
+            new WrongNumberOfArguments("incr");
         }
 
         if(!Database.dbExists(args[1])){

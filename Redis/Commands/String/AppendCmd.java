@@ -5,13 +5,13 @@ import DataStructure.RString;
 import Database.*;
 import ResponseAndError.RInteger;
 import ResponseAndError.RedisData;
-import ResponseAndError.ThrowError.WrongNumberOfArguements;
+import ResponseAndError.ThrowError.WrongNumberOfArguments;
 
 public class AppendCmd implements CommandHandler{
     @Override
     public RedisData handle(String[] args) throws Exception{
         if(args.length != 3){
-            WrongNumberOfArguements.throwError("append");
+            new WrongNumberOfArguments("append");
         }
         if(!Database.dbExists(args[1])){
             Value val = new Value();

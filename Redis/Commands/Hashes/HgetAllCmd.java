@@ -6,7 +6,7 @@ import ResponseAndError.SimpleString;
 import Database.*;
 import ResponseAndError.BulkString;
 import ResponseAndError.RedisData;
-import ResponseAndError.ThrowError.WrongNumberOfArguements;
+import ResponseAndError.ThrowError.WrongNumberOfArguments;
 import java.util.List;
 import java.util.ArrayList;
 
@@ -14,7 +14,7 @@ public class HgetAllCmd implements CommandHandler {
     @Override
     public RedisData handle(String[] args) throws Exception {
         if (args.length != 2) {
-            WrongNumberOfArguements.throwError("hgetall");
+            new WrongNumberOfArguments("hgetall");
         }
         
         if (!Database.dbExists(args[1])) {
