@@ -9,6 +9,13 @@ import java.util.HashMap;
 import Commands.Common.*;
 import Commands.Config.ConfigCmd;
 import Commands.Hashes.*;
+import Commands.Lists.LIndexCmd;
+import Commands.Lists.LlenCmd;
+import Commands.Lists.LpopCmd;
+import Commands.Lists.LpushCmd;
+import Commands.Lists.LrangeCmd;
+import Commands.Lists.LremoveCmd;
+import Commands.Lists.LsetCmd;
 
 
 public class RequestProcessor {
@@ -47,6 +54,17 @@ public class RequestProcessor {
         handlers.put("HLEN", new HlenCmd());
         handlers.put("HMGET", new HmGetCmd());
         handlers.put("HVALS", new HvalusCmd());
+
+        // Lists
+        handlers.put("LPUSH", new LpushCmd());
+        handlers.put("LINDEX", new LIndexCmd());
+        handlers.put("LLEN", new LlenCmd());
+        handlers.put("LPOP", new LpopCmd());
+        handlers.put("LRANGE", new LrangeCmd());
+        handlers.put("LREM", new LremoveCmd());
+        handlers.put("LSET", new LsetCmd());
+                
+
     }
     public static RedisData processRequest(String[] args) throws Exception{
         String cmd = args[0].toUpperCase();

@@ -1,6 +1,9 @@
 package DataStructure;
 
+import java.util.Collection;
+import java.util.Collections;
 import java.util.LinkedList;
+import java.util.Iterator;
 
 public class RLists {
     private LinkedList<String> l = new LinkedList<>();
@@ -9,6 +12,9 @@ public class RLists {
         return Type.STRING;
     }
 
+    public int len(){
+        return l.size();
+    }
     public void lPush(String val) {
         this.l.addFirst(val);
     }
@@ -29,6 +35,18 @@ public class RLists {
             throw new Exception("(nil)");
         }
         return this.l.removeLast();
+    }
+    
+    public int lRemove(String str){
+        Iterator<String> iterator = l.iterator();
+        int count = 0;
+        while (iterator.hasNext()) {
+            if (iterator.next().equals(str)) {
+                iterator.remove();
+                count++;
+            }
+        }
+        return count;
     }
 
     public String getValueByIdx(int num) throws Exception {
