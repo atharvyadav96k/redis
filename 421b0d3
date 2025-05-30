@@ -1,0 +1,131 @@
+[33mcommit f47c8b6e270b60b4babea4346007b91a96d5bbad[m[33m ([m[1;36mHEAD[m[33m)[m
+Author: atharvyadav96k <atharvyadav96k@gmail.com>
+Date:   Wed May 28 17:46:47 2025 +0530
+
+    hlen, hmget,hvalus
+
+[33mcommit e46b40419f845d2d4eb1f9203d30e153b504d3ed[m
+Author: atharvyadav96k <atharvyadav96k@gmail.com>
+Date:   Tue May 27 15:38:25 2025 +0530
+
+    hset
+
+[33mcommit 74b9be98ae188a0a0c110809dfcf4fda61898842[m
+Author: atharvyadav96k <atharvyadav96k@gmail.com>
+Date:   Tue May 27 08:06:42 2025 +0530
+
+    hincrby and wroker readme
+
+[33mcommit 49996d7e514311edb3b04fc8553471268cee3880[m
+Author: atharvyadav96k <atharvyadav96k@gmail.com>
+Date:   Mon May 26 13:33:49 2025 +0530
+
+    redis hset bug fixed : old values getting overwritten, implimented hgetall
+
+[33mcommit 9f982e9600a2036af3c945e593ecf0c027b246ec[m
+Author: atharvyadav96k <atharvyadav96k@gmail.com>
+Date:   Sun May 25 18:44:55 2025 +0530
+
+    passive memory cleaner
+
+[33mcommit ad2487a66687f74c199e44918f512f78769ce487[m
+Author: atharvyadav96k <atharvyadav96k@gmail.com>
+Date:   Sun May 25 10:41:03 2025 +0530
+
+    expire thread and expire method
+
+[33mcommit 250ad28d98ec0bffc1e3886a9d0a978163f5acd3[m
+Author: atharvyadav96k <atharvyadav96k@gmail.com>
+Date:   Sat May 24 16:47:56 2025 +0530
+
+    Del, hget, hset commands
+
+[33mcommit ca5a7876c9edefa502877fe34c07b8c828dd2dd3[m
+Author: atharvyadav96k <atharvyadav96k@gmail.com>
+Date:   Sat May 24 09:35:51 2025 +0530
+
+    len, decr, decrby, incr, incrby cmds
+
+[33mcommit f88c7a03a7eaac06e3a61f8fe5f18a68275c4243[m
+Author: atharvyadav96k <atharvyadav96k@gmail.com>
+Date:   Fri May 23 23:39:30 2025 +0530
+
+    ping string command implimentation
+
+[33mcommit 81d79616d0cfdafa49dc83fe370dd6ae114994d7[m
+Author: atharvyadav96k <atharvyadav96k@gmail.com>
+Date:   Fri May 23 13:54:52 2025 +0530
+
+    command parser
+
+[33mcommit 4d31d5fe6484f430cc4ee39bdb8930d4c2090481[m
+Author: atharvyadav96k <atharvyadav96k@gmail.com>
+Date:   Fri May 23 11:41:15 2025 +0530
+
+    Data Handler
+
+[33mcommit d35b9ebefb34631ba19498813a5db0644f005f56[m
+Author: atharvyadav96k <atharvyadav96k@gmail.com>
+Date:   Thu May 22 22:17:31 2025 +0530
+
+    Data type Detection
+
+[33mcommit 5abeb6a23e2b329328b093457a08de24eb76db31[m
+Author: atharvyadav96k <atharvyadav96k@gmail.com>
+Date:   Thu May 22 20:40:09 2025 +0530
+
+    Implimented Lists
+
+[33mcommit 637cab7b609250c88b81ad3638d40fc5b650628c[m
+Author: atharvyadav96k <atharvyadav96k@gmail.com>
+Date:   Thu May 22 15:40:28 2025 +0530
+
+    Implimented Hashes
+
+[33mcommit 8c35ac398ad123b7b9b5dae8f739cf524baeada6[m
+Author: atharvyadav96k <atharvyadav96k@gmail.com>
+Date:   Thu May 22 10:09:03 2025 +0530
+
+    Implimented String data strecutre
+
+[33mcommit 7bb6665151112e10215165cc6df7193123302ef4[m
+Author: atharvyadav96k <atharvyadav96k@gmail.com>
+Date:   Wed May 21 18:47:47 2025 +0530
+
+    Main database
+
+[33mcommit 23ad1d2239cef45d9ae0d803ad378b3e39e8d89a[m
+Author: atharvyadav96k <atharvyadav96k@gmail.com>
+Date:   Tue May 20 18:42:05 2025 +0530
+
+    Redis Configuration
+
+[33mcommit ce5257fe27234b6dfbcfd809c10a5c94e33ee287[m
+Author: atharvyadav96k <atharvyadav96k@gmail.com>
+Date:   Tue May 20 18:39:21 2025 +0530
+
+    configurations
+
+[33mcommit 038d4a235276f7f8f79a8e78a6e44b386815fbe4[m
+Author: atharvyadav96k <atharvyadav96k@gmail.com>
+Date:   Mon May 19 22:29:03 2025 +0530
+
+    readme
+
+[33mcommit f6b6b63a85e68849e35225143273274ff477c393[m
+Author: atharvyadav96k <atharvyadav96k@gmail.com>
+Date:   Mon May 19 22:25:51 2025 +0530
+
+    store data in binary formate
+
+[33mcommit 93a1d53005d80aceadf7859ce90780520744b235[m
+Author: atharvyadav96k <atharvyadav96k@gmail.com>
+Date:   Mon May 19 21:54:22 2025 +0530
+
+    added tasks, Configuration, backup, data structure
+
+[33mcommit d80c2ac7c324051974f4ca0c98f0e5a1c8faaa49[m
+Author: atharvyadav96k <atharvyadav96k@gmail.com>
+Date:   Mon May 19 17:26:35 2025 +0530
+
+    readme
